@@ -5,14 +5,24 @@ import baseball.extension.isBall
 import baseball.extension.isStrike
 
 class Referee {
+    private val result = mutableListOf<ResultRule>()
 
-    private val _result = mutableListOf<ResultRule>()
-    val result get() = _result
+    fun getEachCount(): BallStrikeCount {
+        var strikeCount = 0
+        var ballCount = 0
+        for ((k, v) in result.groupingBy { it.result }.eachCount()) {
+            when (k) {
+                ResultRule.STRIKE.result -> strikeCount = v
+                ResultRule.BALL.result -> ballCount = v
+            }
+        }
+        return BallStrikeCount(strikeCount, ballCount)
+    }
 
     fun saveResult(userNumbers: List<Int>, answerNumbers: List<Int>) {
-        _result.clear()
+        result.clear()
         for ((index, value) in userNumbers.withIndex()) {
-            _result.add(evaluateNumbers(index, value, answerNumbers))
+            result.add(evaluateNumbers(index, value, answerNumbers))
         }
     }
 
