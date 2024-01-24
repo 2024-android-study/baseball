@@ -1,6 +1,10 @@
 package baseball
 
 class BaseballGame {
+    private val outputView = OutputView()
+    private val inputView = InputView()
+    private val computer = Computer()
+
     fun calculateBallStrikeCount(computerNumbers: List<Int>, inputNumbers: List<Int>): Pair<Int, Int> {
         var balls = 0
         var strikes = 0
@@ -15,5 +19,35 @@ class BaseballGame {
         }
 
         return Pair(balls, strikes)
+    }
+
+    fun play() {
+        var computerNumbers = computer.createNumbers()
+
+        outputView.showGameStartMessage()
+        do {
+            try {
+                val inputNumbers = inputView.readNumbers()
+
+                val (balls, strikes) = calculateBallStrikeCount(computerNumbers, inputNumbers)
+                outputView.showCountMessage(balls, strikes)
+
+                if(strikes == 3) {
+                    val restartInput = inputView.readRestartInput()
+
+                    if(restartInput == 1) {
+                        computerNumbers = computer.createNumbers()
+                        continue
+                    }
+                    else if(restartInput == 2) {
+                        break
+                    }
+                }
+
+            } catch (e: IllegalArgumentException) {
+                println(e.printStackTrace())
+                break
+            }
+        } while (true)
     }
 }
