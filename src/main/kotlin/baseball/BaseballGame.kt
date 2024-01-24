@@ -27,31 +27,24 @@ class BaseballGame {
 
     fun play() {
         var computerNumbers = computer.createNumbers()
-
         outputView.showGameStartMessage()
         do {
-            try {
-                val numbers = inputView.readNumbers()
+            val numbers = inputView.readNumbers()
 
-                val (balls, strikes) = calculateBallStrikeCount(computerNumbers, numbers)
-                outputView.showBallStrikeCount(balls, strikes)
+            val (balls, strikes) = calculateBallStrikeCount(computerNumbers, numbers)
+            outputView.showBallStrikeCount(balls, strikes)
 
-                if (strikes == BaseballGameNumber.MAX_ALLOWED_STRIKES.number) {
-                    outputView.showGameEndMessage()
+            if (strikes == BaseballGameNumber.MAX_ALLOWED_STRIKES.number) {
+                outputView.showGameEndMessage()
 
-                    val decision = inputView.readRestartOrExitDecision()
+                val decision = inputView.readRestartOrExitDecision()
 
-                    if (decision == BaseballGameNumber.RESTART_INPUT.number) {
-                        computerNumbers = computer.createNumbers()
-                        continue
-                    } else if (decision == BaseballGameNumber.END_INPUT.number) {
-                        break
-                    }
+                if (decision == BaseballGameNumber.RESTART_INPUT.number) {
+                    computerNumbers = computer.createNumbers()
+                    continue
+                } else if (decision == BaseballGameNumber.END_INPUT.number) {
+                    break
                 }
-
-            } catch (e: IllegalArgumentException) {
-                e.printStackTrace()
-                break
             }
         } while (true)
     }
