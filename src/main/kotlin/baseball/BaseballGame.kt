@@ -3,7 +3,7 @@ package baseball
 class BaseballGame {
     private val outputView = OutputView()
     private val inputView = InputView()
-    private val computer = Computer()
+    private val computer= Computer()
 
     fun calculateBallStrikeCount(computerNumbers: List<Int>, inputNumbers: List<Int>): Pair<Int, Int> {
         var balls = 0
@@ -32,20 +32,21 @@ class BaseballGame {
                 val (balls, strikes) = calculateBallStrikeCount(computerNumbers, inputNumbers)
                 outputView.showCountMessage(balls, strikes)
 
-                if(strikes == 3) {
+                if (strikes == 3) {
+                    outputView.showGameEndMessage()
+
                     val restartInput = inputView.readRestartInput()
 
-                    if(restartInput == 1) {
+                    if (restartInput == 1) {
                         computerNumbers = computer.createNumbers()
                         continue
-                    }
-                    else if(restartInput == 2) {
+                    } else if (restartInput == 2) {
                         break
                     }
                 }
 
             } catch (e: IllegalArgumentException) {
-                println(e.printStackTrace())
+                e.printStackTrace()
                 break
             }
         } while (true)
