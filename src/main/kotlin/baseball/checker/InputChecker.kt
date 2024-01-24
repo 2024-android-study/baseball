@@ -1,6 +1,7 @@
 package baseball.checker
 
 import baseball.enums.BaseballGameNumber
+import baseball.messages.BaseballGameExceptionMessage
 
 class InputChecker {
     //야구 숫자 입력 체크
@@ -18,21 +19,24 @@ class InputChecker {
 
     private fun isValidLength(numbers: String) {
         if (numbers.length != BaseballGameNumber.REQUIRED_NUMBER_SIZE.number)
-            throw IllegalArgumentException("세자리 숫자가 입력되지 않았습니다.")
+            throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_MISSING_THREE_NUMBERS)
     }
 
     private fun isNumber(numbers: String) {
         for (number in numbers) {
-            if (!number.isDigit()) throw IllegalArgumentException("숫자가 아닌 문자를 입력하셨습니다.")
+            if (!number.isDigit())
+                throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_NON_NUMERIC_INPUT)
         }
     }
 
     private fun hasDuplicateNumbers(numbers: String) {
-        if (numbers.length != numbers.toSet().size) throw IllegalArgumentException("중복된 숫자를 입력하셨습니다.")
+        if (numbers.length != numbers.toSet().size)
+            throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_DUPLICATE_NUMBERS)
     }
 
     private fun isCorrectRestartInput(restartInput: String) {
-        if (restartInput.toInt() != BaseballGameNumber.RESTART_INPUT.number && restartInput.toInt() != BaseballGameNumber.END_INPUT.number)
-            throw IllegalArgumentException("입력하신 숫자가 올바른 숫자가 아닙니다.")
+        if (restartInput.toInt() != BaseballGameNumber.RESTART_INPUT.number
+                && restartInput.toInt() != BaseballGameNumber.END_INPUT.number)
+            throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_INVALID_NUMBER)
     }
 }

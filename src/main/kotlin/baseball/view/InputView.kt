@@ -2,13 +2,14 @@ package baseball.view
 
 import baseball.checker.InputChecker
 import baseball.enums.BaseballGameNumber
+import baseball.messages.BaseballGameMessage
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     private val inputChecker = InputChecker()
 
     fun readNumbers(): List<Int> {
-        print("숫자를 입력해주세요 : ")
+        print(BaseballGameMessage.INPUT_MESSAGE)
         val numbers = Console.readLine()
 
         inputChecker.numbersCheck(numbers)
@@ -17,7 +18,10 @@ class InputView {
     }
 
     fun readRestartInput(): Int {
-        println("게임을 새로 시작하려면 ${BaseballGameNumber.RESTART_INPUT.number}, 종료하려면 ${BaseballGameNumber.END_INPUT.number}를 입력하세요.")
+        println(BaseballGameMessage.ASK_RESTART_OR_END_MESSAGE.format(
+                BaseballGameNumber.RESTART_INPUT.number,
+                BaseballGameNumber.END_INPUT.number
+        ))
         val restartInput = Console.readLine()
 
         inputChecker.restartInputCheck(restartInput)
