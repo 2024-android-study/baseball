@@ -1,6 +1,6 @@
 package baseball
 
-import baseball.enums.BaseballNumber
+import baseball.enums.BaseballGameNumber
 import baseball.view.InputView
 import baseball.view.OutputView
 
@@ -13,7 +13,7 @@ class BaseballGame {
         var balls = 0
         var strikes = 0
 
-        for (i: Int in BaseballNumber.ZERO.number until BaseballNumber.REQUIRED_NUMBER_SIZE.number) {
+        for (i: Int in BaseballGameNumber.ZERO.number until BaseballGameNumber.REQUIRED_NUMBER_SIZE.number) {
             //같은 자리에 있는 경우, 다른 자리에 자리에 있는 경우
             if (computerNumbers[i] == inputNumbers[i]) {
                 strikes++
@@ -36,15 +36,15 @@ class BaseballGame {
                 val (balls, strikes) = calculateBallStrikeCount(computerNumbers, inputNumbers)
                 outputView.showCountMessage(balls, strikes)
 
-                if (strikes == BaseballNumber.MAX_ALLOWED_STRIKES.number) {
+                if (strikes == BaseballGameNumber.MAX_ALLOWED_STRIKES.number) {
                     outputView.showGameEndMessage()
 
                     val restartInput = inputView.readRestartInput()
 
-                    if (restartInput == BaseballNumber.RESTART_INPUT.number) {
+                    if (restartInput == BaseballGameNumber.RESTART_INPUT.number) {
                         computerNumbers = computer.createNumbers()
                         continue
-                    } else if (restartInput == BaseballNumber.END_INPUT.number) {
+                    } else if (restartInput == BaseballGameNumber.END_INPUT.number) {
                         break
                     }
                 }

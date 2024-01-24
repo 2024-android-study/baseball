@@ -1,6 +1,6 @@
 package baseball.view
 
-import baseball.enums.BaseballNumber
+import baseball.enums.BaseballGameNumber
 
 class OutputView {
     fun showGameStartMessage() {
@@ -9,14 +9,14 @@ class OutputView {
 
     fun showCountMessage(ball: Int, strike: Int) {
         when {
-            ball > BaseballNumber.ZERO.number && strike > BaseballNumber.ZERO.number -> println("${ball}볼 ${strike}스트라이크")
-            ball > BaseballNumber.ZERO.number -> println("${ball}볼")
-            strike > BaseballNumber.ZERO.number -> println("${strike}스트라이크")
+            ball > BaseballGameNumber.ZERO.number && strike > BaseballGameNumber.ZERO.number -> println("${ball}볼 ${strike}스트라이크")
+            ball > BaseballGameNumber.ZERO.number -> println("${ball}볼")
+            strike > BaseballGameNumber.ZERO.number -> println("${strike}스트라이크")
             else -> println("낫싱")
         }
     }
 
     fun showGameEndMessage() {
-        println("${BaseballNumber.MAX_ALLOWED_STRIKES.number}개의 숫자를 모두 맞히셨습니다! 게임 종료")
+        println("${BaseballGameNumber.MAX_ALLOWED_STRIKES.number}개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 }

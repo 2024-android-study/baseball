@@ -1,6 +1,6 @@
 package baseball.enums
 
-enum class BaseballNumber(val number: Int) {
+enum class BaseballGameNumber(val number: Int) {
     ZERO(0),
 
     RESTART_INPUT(1),
