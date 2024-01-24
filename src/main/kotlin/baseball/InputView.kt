@@ -1,5 +1,6 @@
 package baseball
 
+import baseball.enums.BaseballNumber
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
@@ -13,7 +14,7 @@ class InputView {
     }
 
     fun readRestartInput(): Int {
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        println("게임을 새로 시작하려면 ${BaseballNumber.RESTART_INPUT.number}, 종료하려면 ${BaseballNumber.END_INPUT.number}를 입력하세요.")
         val restartInput = Console.readLine()
 
         restartInputCheck(restartInput)
@@ -33,12 +34,13 @@ class InputView {
     }
 
     fun isValidLength(numbers: String) {
-        if (numbers.length != 3) throw IllegalArgumentException("세자리 숫자가 입력되지 않았습니다.")
+        if (numbers.length != BaseballNumber.REQUIRED_NUMBER_SIZE.number)
+            throw IllegalArgumentException("세자리 숫자가 입력되지 않았습니다.")
     }
 
     fun isNumber(numbers: String) {
-        for(number in numbers) {
-            if(!number.isDigit()) throw IllegalArgumentException("숫자가 아닌 문자를 입력하셨습니다.")
+        for (number in numbers) {
+            if (!number.isDigit()) throw IllegalArgumentException("숫자가 아닌 문자를 입력하셨습니다.")
         }
     }
 
@@ -47,7 +49,7 @@ class InputView {
     }
 
     fun isCorrectRestartInput(restartInput: String) {
-        if (restartInput.toInt() != 1 && restartInput.toInt() != 2)
+        if (restartInput.toInt() != BaseballNumber.RESTART_INPUT.number && restartInput.toInt() != BaseballNumber.END_INPUT.number)
             throw IllegalArgumentException("입력하신 숫자가 올바른 숫자가 아닙니다.")
     }
 }
