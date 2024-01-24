@@ -17,15 +17,15 @@ class InputView {
         return numbers.map { it.toString().toInt() }
     }
 
-    fun readRestartInput(): Int {
+    fun readRestartOrExitDecision(): Int {
         println(BaseballGameMessage.ASK_RESTART_OR_END_MESSAGE.format(
                 BaseballGameNumber.RESTART_INPUT.number,
                 BaseballGameNumber.END_INPUT.number
         ))
-        val restartInput = Console.readLine()
+        val decision = Console.readLine()
 
-        inputChecker.restartInputCheck(restartInput)
+        inputChecker.restartOrExitDecisionCheck(decision)
 
-        return restartInput.toInt()
+        return decision.toInt()
     }
 }

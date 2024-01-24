@@ -8,13 +8,13 @@ class OutputView {
         println(BaseballGameMessage.GAME_START_MESSAGE)
     }
 
-    fun showCountMessage(ball: Int, strike: Int) {
+    fun showBallStrikeCount(balls: Int, strikes: Int) {
         when {
-            ball > BaseballGameNumber.ZERO.number && strike > BaseballGameNumber.ZERO.number
-            -> println(BaseballGameMessage.BALL_MESSAGE.format(ball) + " " + BaseballGameMessage.STRIKE_MESSAGE.format(strike))
+            balls > BaseballGameNumber.ZERO.number && strikes > BaseballGameNumber.ZERO.number
+            -> println(BaseballGameMessage.BALL_MESSAGE.format(balls) + " " + BaseballGameMessage.STRIKE_MESSAGE.format(strikes))
 
-            ball > BaseballGameNumber.ZERO.number -> println(BaseballGameMessage.BALL_MESSAGE.format(ball))
-            strike > BaseballGameNumber.ZERO.number -> println(BaseballGameMessage.STRIKE_MESSAGE.format(strike))
+            balls > BaseballGameNumber.ZERO.number -> println(BaseballGameMessage.BALL_MESSAGE.format(balls))
+            strikes > BaseballGameNumber.ZERO.number -> println(BaseballGameMessage.STRIKE_MESSAGE.format(strikes))
             else -> println(BaseballGameMessage.NOTHING_MESSAGE)
         }
     }

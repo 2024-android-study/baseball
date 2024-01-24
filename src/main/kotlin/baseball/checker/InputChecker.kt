@@ -12,31 +12,31 @@ class InputChecker {
     }
 
     //재시작 종료 여부 체크
-    fun restartInputCheck(restartInput: String) {
-        isNumber(restartInput)
-        isCorrectRestartInput(restartInput)
+    fun restartOrExitDecisionCheck(decision: String) {
+        isNumber(decision)
+        isCorrectRestartInput(decision)
     }
 
-    private fun isValidLength(numbers: String) {
-        if (numbers.length != BaseballGameNumber.REQUIRED_NUMBER_SIZE.number)
+    private fun isValidLength(str: String) {
+        if (str.length != BaseballGameNumber.REQUIRED_NUMBER_SIZE.number)
             throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_MISSING_THREE_NUMBERS)
     }
 
-    private fun isNumber(numbers: String) {
-        for (number in numbers) {
+    private fun isNumber(str: String) {
+        for (number in str) {
             if (!number.isDigit())
                 throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_NON_NUMERIC_INPUT)
         }
     }
 
-    private fun hasDuplicateNumbers(numbers: String) {
-        if (numbers.length != numbers.toSet().size)
+    private fun hasDuplicateNumbers(str: String) {
+        if (str.length != str.toSet().size)
             throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_DUPLICATE_NUMBERS)
     }
 
-    private fun isCorrectRestartInput(restartInput: String) {
-        if (restartInput.toInt() != BaseballGameNumber.RESTART_INPUT.number
-                && restartInput.toInt() != BaseballGameNumber.END_INPUT.number)
+    private fun isCorrectRestartInput(str: String) {
+        if (str.toInt() != BaseballGameNumber.RESTART_INPUT.number
+                && str.toInt() != BaseballGameNumber.END_INPUT.number)
             throw IllegalArgumentException(BaseballGameExceptionMessage.ERROR_INVALID_NUMBER)
     }
 }
