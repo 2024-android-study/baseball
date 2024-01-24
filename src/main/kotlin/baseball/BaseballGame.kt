@@ -1,6 +1,8 @@
 package baseball
 
 import baseball.enums.BaseballNumber
+import baseball.view.InputView
+import baseball.view.OutputView
 
 class BaseballGame {
     private val outputView = OutputView()

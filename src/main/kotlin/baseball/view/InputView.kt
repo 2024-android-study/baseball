@@ -1,4 +1,4 @@
-package baseball
+package baseball.view
 
 import baseball.enums.BaseballNumber
 import camp.nextstep.edu.missionutils.Console
