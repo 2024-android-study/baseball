@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="baseball.mdel.Referee" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-01-23T10:26:46" hostname="jangminsuui-MacBookAir.local" time="0.028">
+  <properties/>
+  <testcase name="숫자를 맞춘 결과가 새로 저장되었는지 확인()" classname="baseball.mdel.Referee" time="0.028"/>
+  <system-out><![CDATA[[NOTHING, NOTHING, NOTHING]
+[NOTHING, NOTHING, NOTHING]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
