@@ -23,4 +23,5 @@ class Input {
 
         return true
     }
+
 }
