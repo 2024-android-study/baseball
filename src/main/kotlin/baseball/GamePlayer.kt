@@ -10,7 +10,7 @@ class GamePlayer {
     }
 
     private fun playOneSet() {
-        answerList = opponent.createNum().toMutableList()
+        answerList = opponent.generateRandomNumber().toMutableList()
 //        println("정답: $answerList")
         println("숫자 야구 게임을 시작합니다.")
         repeatUntilGetAnswer()

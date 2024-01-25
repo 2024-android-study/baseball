@@ -1,15 +1,15 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Opponent {
-    fun createNum(): List<Int> {
-        val range = (1..9)
+    fun generateRandomNumber(): List<Int> {
+        val randomNumber = Randoms.pickNumberInRange(1, 9)
         val list = mutableListOf<Int>()
-        var num = 0
 
         while (list.size < 3) {
-            num = range.random()
-            if (!list.contains(num)) {
-                list.add(num)
+            if (!list.contains(randomNumber)) {
+                list.add(randomNumber)
             }
         }
         return list
