@@ -1,14 +1,17 @@
 package baseball
 
+import baseball.Constants.ResultConstant
+import baseball.Constants.ViewConstant
+
 class OutputView {
     // 게임 시작
     fun printStartGame() {
-        println(Constant.START_GAME)
+        println(ViewConstant.START_GAME)
     }
 
     // 3스트라이크인 경우 사용
     fun printSuccess() {
-        println(Constant.SUCCESS_GAME)
+        println(ViewConstant.SUCCESS_GAME)
     }
 
     // 힌트 출력
@@ -18,20 +21,30 @@ class OutputView {
 
     // 힌트 만들기
     private fun makeHint(strike: Int, ball: Int): String {
-        if (strike == 0 && ball == 0) {
-            return Constant.NOTHING
+        return when {
+            strike == 0 && ball == 0 -> ResultConstant.NOTHING
+
+            ball == 0 -> String.format(ResultConstant.STRIKE, strike)
+
+            strike == 0 -> String.format(ResultConstant.BALL, ball)
+
+            else -> String.format(ResultConstant.BALL_AND_STRIKE, ball, strike)
         }
 
-        var result = ""
-
-        if (ball > 0) {
-            result += "${ball}${Constant.BALL} "
-        }
-
-        if (strike > 0) {
-            result += "${strike}${Constant.STRIKE}"
-        }
-
-        return result
+//        if (strike == 0 && ball == 0) {
+//            return ResultConstant.NOTHING
+//        }
+//
+//        var result = ""
+//
+//        if (ball > 0) {
+//            result += "${ball}${ResultConstant.BALL} "
+//        }
+//
+//        if (strike > 0) {
+//            result += "${strike}${ResultConstant.STRIKE}"
+//        }
+//
+//        return result
     }
 }
