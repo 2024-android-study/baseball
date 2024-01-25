@@ -1,6 +1,13 @@
 package baseball
 
+import baseball.Constant.Companion.END_INPUT
+import baseball.Constant.Companion.ERROR_DUPLICATE
+import baseball.Constant.Companion.ERROR_IS_NUMBERS
+import baseball.Constant.Companion.ERROR_RANGE
+import baseball.Constant.Companion.ERROR_RESTART
+import baseball.Constant.Companion.ERROR_THREE_NUMBERS
 import baseball.Constant.Companion.INPUT
+import baseball.Constant.Companion.RESTART_INPUT
 import camp.nextstep.edu.missionutils.Console
 class Input {
     fun getInput(): List<Int> {
@@ -11,17 +18,27 @@ class Input {
     }
 
     private fun checkInput(input: String) : Boolean{
-        if(input.length != 3) throw IllegalArgumentException("세 자리 숫자를 입력해주세요.")
+        if(input.length != 3) throw IllegalArgumentException(ERROR_THREE_NUMBERS)
 
         for(i in input) {
-            if(!i.isDigit()) throw IllegalArgumentException("숫자를 입력해주세요.")
+            if(!i.isDigit()) throw IllegalArgumentException(ERROR_IS_NUMBERS)
         }
 
-        if(input.toSet().size != input.length) throw IllegalArgumentException("서로 다른 숫자를 입력해주세요.")
+        if(input.toSet().size != input.length) throw IllegalArgumentException(ERROR_DUPLICATE)
 
-        if(input.all { it in '1'..'9' }) throw IllegalArgumentException("1~9 범위의 숫자를 입력해주세요.")
+        if(input.all { it in '1'..'9' }) throw IllegalArgumentException(ERROR_RANGE)
 
         return true
     }
 
+    fun getRestartOrEndInput(): Int {
+        val input = Console.readLine()
+        checkRestartOrEndInput(input)
+        return input.toInt()
+    }
+
+    private fun checkRestartOrEndInput(input: String) {
+        if(input != END_INPUT && input != RESTART_INPUT)
+            throw IllegalArgumentException(ERROR_RESTART)
+    }
 }

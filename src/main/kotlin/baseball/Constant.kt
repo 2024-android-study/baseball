@@ -10,5 +10,15 @@ class Constant {
         const val NOTHING = "낫싱"
         const val STRIKE = "스트라이크"
         const val BALL = "볼"
+
+        const val ERROR_THREE_NUMBERS = "세 자리 숫자를 입력해주세요."
+        const val ERROR_IS_NUMBERS = "숫자를 입력해주세요."
+        const val ERROR_DUPLICATE = "서로 다른 숫자를 입력해주세요."
+        const val ERROR_RANGE = "1~9 범위의 숫자를 입력해주세요."
+        const val ERROR_RESTART = "올바른 숫자를 입력해 주세요."
+
+        const val RESTART_INPUT = "1"
+        const val END_INPUT = "2"
+
     }
 }
