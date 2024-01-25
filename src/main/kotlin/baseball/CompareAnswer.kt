@@ -10,8 +10,9 @@ class CompareAnswer(answer: List<Int>, input: List<Int>) {
         this.input = input.toMutableList()
     }
 
-    fun run() {
+    fun run(): Boolean {
         printCompareResult(compareAnswer())
+        return isFinished(compareAnswer().second)
     }
 
     fun compareAnswer(): Pair<Int, Int> {
@@ -39,5 +40,10 @@ class CompareAnswer(answer: List<Int>, input: List<Int>) {
         if (pair.second != 0) {
             println("${pair.second}스트라이크")
         }
+    }
+
+    fun isFinished(strike: Int): Boolean {
+        if (strike == 3) return true
+        return false
     }
 }
