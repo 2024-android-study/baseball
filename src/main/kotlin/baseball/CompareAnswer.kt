@@ -38,8 +38,9 @@ class CompareAnswer(answer: List<Int>, input: List<Int>) {
             print("${pair.first}볼 ")
         }
         if (pair.second != 0) {
-            println("${pair.second}스트라이크")
+            print("${pair.second}스트라이크")
         }
+        println()
     }
 
     fun isFinished(strike: Int): Boolean {
