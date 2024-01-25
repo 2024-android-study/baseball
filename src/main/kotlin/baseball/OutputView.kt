@@ -25,11 +25,11 @@ class OutputView {
         var result = ""
 
         if (ball > 0) {
-            result += "${ball}${Constant.BALL}"
+            result += "${ball}${Constant.BALL} "
         }
 
         if (strike > 0) {
-            result + "${strike}${Constant.STRIKE}"
+            result += "${strike}${Constant.STRIKE}"
         }
 
         return result

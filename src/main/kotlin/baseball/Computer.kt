@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
     // 컴퓨터 난수 생성
-    fun createNum() {
+    fun createNum(): List<Int> {
         val computer = mutableListOf<Int>()
 
         while (computer.size < 3) {
@@ -15,6 +15,8 @@ class Computer {
             }
         }
 
-//        println(computer)
+        println(computer)
+
+        return computer
     }
 }
