@@ -9,7 +9,7 @@ import baseball.Constant.Companion.STRIKE
 
 class Output {
     fun printStart() {
-        print(START)
+        println(START)
     }
 
     fun printHint(ball: Int, strike: Int) {
@@ -22,6 +22,7 @@ class Output {
             hint += "${ball}${BALL}"
         }
         if(strike>0) {
+            if(ball>0) hint += " "
             hint += "${strike}${STRIKE}"
         }
 

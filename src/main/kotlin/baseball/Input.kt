@@ -26,7 +26,7 @@ class Input {
 
         if(input.toSet().size != input.length) throw IllegalArgumentException(ERROR_DUPLICATE)
 
-        if(input.all { it in '1'..'9' }) throw IllegalArgumentException(ERROR_RANGE)
+        if(input.any { it !in '1'..'9' }) throw IllegalArgumentException(ERROR_RANGE)
 
         return true
     }
