@@ -1,10 +1,9 @@
 package baseball
 
-import java.util.*
-
 class CheckInput(inputParam: String) {
 
     var input: String = ""
+    private var list = mutableListOf<Int>()
 
     init {
         if (inputParam.isEmpty()) {
@@ -14,12 +13,12 @@ class CheckInput(inputParam: String) {
     }
 
     fun checkIsValidInput() {
-        throwError(checkIsAllNumber(input), "숫자 형태가 아님")
-        val list = returnIntList(input)
+        throwError(checkIsAllNumber(), "숫자 형태가 아님")
+        list = returnIntList().toMutableList()
 //        println(list)
-        throwError(checkIsCountThree(list), "숫자 개수가 3개가 아님")
-        throwError(checkRange(list), "숫자 범위가 1~9가 아님")
-        throwError(checkIsAllDifferent(list), "모두 다 다른 수가 아님")
+        throwError(checkIsCountThree(), "숫자 개수가 3개가 아님")
+        throwError(checkRange(), "숫자 범위가 1~9가 아님")
+        throwError(checkIsAllDifferent(), "모두 다 다른 수가 아님")
     }
 
     private fun throwError(bool: Boolean, message: String) {
@@ -29,22 +28,22 @@ class CheckInput(inputParam: String) {
         }
     }
 
-    private fun checkIsAllNumber(input: String): Boolean {
+    private fun checkIsAllNumber(): Boolean {
         return (input.all { Character.isDigit(it) })
     }
 
-    private fun returnIntList(input: String): List<Int> {
+    fun returnIntList(): List<Int> {
         val strings = input.chunked(1).toMutableList()
         val list = strings.map { it.toInt() }.toTypedArray()
 
         return list.toList()
     }
 
-    private fun checkIsCountThree(list: List<Int>): Boolean {
+    private fun checkIsCountThree(): Boolean {
         return (list.size == 3)
     }
 
-    private fun checkRange(list: List<Int>): Boolean {
+    private fun checkRange(): Boolean {
         list.forEach {i ->
             if (i < 1 || i > 9)
                 return  false
@@ -52,7 +51,7 @@ class CheckInput(inputParam: String) {
         return true
     }
 
-    private fun checkIsAllDifferent(list: List<Int>): Boolean {
+    private fun checkIsAllDifferent(): Boolean {
         list.forEach {i ->
             if (list.count{it == i} > 1)
                 return false
