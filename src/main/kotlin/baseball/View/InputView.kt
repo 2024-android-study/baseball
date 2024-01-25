@@ -1,4 +1,4 @@
-package baseball
+package baseball.View
 
 import baseball.Constants.ErrorConstant
 import baseball.Constants.RandomNumConstants

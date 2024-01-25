@@ -1,4 +1,4 @@
-package baseball
+package baseball.View
 
 import baseball.Constants.ResultConstant
 import baseball.Constants.ViewConstant
@@ -30,21 +30,5 @@ class OutputView {
 
             else -> String.format(ResultConstant.BALL_AND_STRIKE, ball, strike)
         }
-
-//        if (strike == 0 && ball == 0) {
-//            return ResultConstant.NOTHING
-//        }
-//
-//        var result = ""
-//
-//        if (ball > 0) {
-//            result += "${ball}${ResultConstant.BALL} "
-//        }
-//
-//        if (strike > 0) {
-//            result += "${strike}${ResultConstant.STRIKE}"
-//        }
-//
-//        return result
     }
 }
