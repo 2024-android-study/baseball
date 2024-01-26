@@ -1,5 +1,7 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
+
 class GamePlayer {
     val opponent = Opponent()
 
@@ -29,12 +31,12 @@ class GamePlayer {
 
     private fun userInput(): String {
         print("숫자를 입력해주세요 : ")
-        return readLine().toString()
+        return Console.readLine()
     }
 
     private fun questionToRestartGame() {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        val input = readLine().toString()
+        val input = Console.readLine()
         if (input != "1" && input != "2") {
             throw IllegalArgumentException("유효하지 않은 숫자")
         }
