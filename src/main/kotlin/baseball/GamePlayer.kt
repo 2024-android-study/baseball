@@ -6,13 +6,13 @@ class GamePlayer {
     var answerList = mutableListOf<Int>()
 
     fun play() {
+        println("숫자 야구 게임을 시작합니다.")
         playOneSet()
     }
 
     private fun playOneSet() {
         answerList = opponent.generateRandomNumber().toMutableList()
 //        println("정답: $answerList")
-        println("숫자 야구 게임을 시작합니다.")
         repeatUntilGetAnswer()
     }
 
