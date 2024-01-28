@@ -24,11 +24,11 @@ class OutputView {
         return when {
             strike == 0 && ball == 0 -> ResultConstant.NOTHING
 
-            ball == 0 -> String.format(ResultConstant.STRIKE, strike)
+            ball == 0 -> ResultConstant.STRIKE.format(strike)
 
-            strike == 0 -> String.format(ResultConstant.BALL, ball)
+            strike == 0 -> ResultConstant.BALL.format(ball)
 
-            else -> String.format(ResultConstant.BALL_AND_STRIKE, ball, strike)
+            else -> ResultConstant.BALL_AND_STRIKE.format(ball, strike)
         }
     }
 }

@@ -18,14 +18,18 @@ class Validator {
         }
 
         // 1 ~ 9 사이의 숫자인지 확인
-        if (input.contains(RandomNumConstants.ZERO)) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_VALUE_ERROR)
-        }
+        require(!input.contains(RandomNumConstants.ZERO)) {ErrorConstant.INPUT_VALUE_ERROR}
+
+//        if (input.contains(RandomNumConstants.ZERO)) {
+//            throw IllegalArgumentException(ErrorConstant.INPUT_VALUE_ERROR)
+//        }
 
         // 서로 다른 숫자인지 확인
-        if (isDuplicate(input)) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_DUPLICATE_ERROR)
-        }
+        require(!isDuplicate((input))) {ErrorConstant.INPUT_DUPLICATE_ERROR}
+
+//        if (isDuplicate(input)) {
+//            throw IllegalArgumentException(ErrorConstant.INPUT_DUPLICATE_ERROR)
+//        }
     }
 
     // 게임 재시작 입력값 검증

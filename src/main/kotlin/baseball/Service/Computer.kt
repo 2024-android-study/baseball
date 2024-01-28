@@ -26,7 +26,7 @@ class Computer {
         var strike = 0
         var ball = 0
 
-        for (i in 0 until 3) {
+        for (i in RandomNumConstants.ZERO.toInt() until RandomNumConstants.RANDOM_NUM_SIZE) {
             if (input[i] == computer[i]) { // 같은 자리에 있는 숫자가 같은 경우
                 strike++
             } else if (computer.contains(input[i])) { // 해당 숫자가 포함되어 있는 경우

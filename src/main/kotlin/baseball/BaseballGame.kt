@@ -13,14 +13,14 @@ class BaseballGame {
     private val computer = Computer()
 
     fun play() {
+        outputView.printStartGame()
+
         do {
             game()
         } while (inputView.restartGame() == StatementConstant.RESUME)
     }
 
     private fun game() {
-        outputView.printStartGame()
-
         val answerNum = computer.createNum()
 
         while (true) {
