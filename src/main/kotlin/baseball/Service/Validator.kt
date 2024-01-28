@@ -8,40 +8,24 @@ class Validator {
     // 사용자 입력값 검증
     fun validateInputNum(input: String) {
         // 숫자인지 확인
-        if (!isNumber(input)) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_NOT_NUMBER)
-        }
+        require((isNumber(input))) {ErrorConstant.INPUT_NOT_NUMBER}
 
         // 길이가 3인지 확인
-        if (input.length != RandomNumConstants.RANDOM_NUM_SIZE) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_LENGTH_ERROR)
-        }
+        require(input.length == RandomNumConstants.RANDOM_NUM_SIZE) {ErrorConstant.INPUT_LENGTH_ERROR}
 
         // 1 ~ 9 사이의 숫자인지 확인
         require(!input.contains(RandomNumConstants.ZERO)) {ErrorConstant.INPUT_VALUE_ERROR}
 
-//        if (input.contains(RandomNumConstants.ZERO)) {
-//            throw IllegalArgumentException(ErrorConstant.INPUT_VALUE_ERROR)
-//        }
-
         // 서로 다른 숫자인지 확인
         require(!isDuplicate((input))) {ErrorConstant.INPUT_DUPLICATE_ERROR}
-
-//        if (isDuplicate(input)) {
-//            throw IllegalArgumentException(ErrorConstant.INPUT_DUPLICATE_ERROR)
-//        }
     }
 
     // 게임 재시작 입력값 검증
     fun validateRestartNum(input: String) {
         // 숫자인지 확인
-        if (!isNumber(input)) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_NOT_NUMBER)
-        }
+        require((isNumber(input))) {ErrorConstant.INPUT_NOT_NUMBER}
 
-        if (input.toInt() != StatementConstant.RESUME && input.toInt() != StatementConstant.STOP) {
-            throw IllegalArgumentException(ErrorConstant.INPUT_VALUE_ERROR)
-        }
+        require(input.toInt() == StatementConstant.RESUME || input.toInt() == StatementConstant.STOP) {ErrorConstant.INPUT_VALUE_ERROR}
     }
 
     // 숫자인지 확인
